@@ -20,9 +20,9 @@ dependencies:
 
   # State management and utility packages
   shared_preferences: ^2.5.3
-  riverpod: ^2.6.1
-  flutter_riverpod: ^2.6.1
   get: ^4.6.6
+  http: ^1.2.2
+  jwt_decoder: ^2.0.1
 
   # Animation packages
   flutter_animate: ^4.5.0
@@ -35,27 +35,21 @@ dependencies:
   # UI component packages
   glassmorphism: ^3.0.0
   shimmer: ^3.0.0
+  image_picker: ^1.1.2
   card_swiper: ^3.0.1
+  fluttertoast: ^8.2.12
+  url_launcher: ^6.3.1
+  video_player: ^2.10.0
+  file_picker: ^10.2.0
+  dropdown_button2: ^2.3.9
 
   # Styling and layout packages
   google_fonts: ^6.2.1
   gap: ^3.0.1
   flutter_screenutil: ^5.9.0
-
   confetti: ^0.8.0
 
-  # mine
-  http: ^1.2.2
-  font_awesome_flutter: ^10.4.0 # For FontAwesome icons
-  fluttertoast: ^8.2.12
-  fl_chart: ^0.63.0
-  image_picker: ^1.1.2
-  intl: ^0.20.2
-  jwt_decoder: ^2.0.1
-  dropdown_button2: ^2.3.9
-  url_launcher: ^6.3.1
-  video_player: ^2.10.0
-  file_picker: ^10.2.0
+
 
 dev_dependencies:
   flutter_test:

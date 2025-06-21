@@ -1,4 +1,4 @@
-name: nomore
+name: setuapp
 description: "A new Flutter project."
 
 # Prevents the package from being accidentally published to pub.dev
@@ -28,6 +28,7 @@ dependencies:
   flutter_animate: ^4.5.0
   lottie: ^3.1.0
 
+
   # Icon packages
   phosphor_flutter: ^2.1.0
   lucide_icons: ^0.257.0
@@ -48,6 +49,9 @@ dependencies:
   gap: ^3.0.1
   flutter_screenutil: ^5.9.0
   confetti: ^0.8.0
+  translator: ^1.0.3+1
+  connectivity_plus: ^6.1.4
+  google_translator: ^1.0.0
 
 
 

@@ -554,7 +554,6 @@ class SupportedLanguages {
     Language(name: 'English', code: 'en', flag: '🇺🇸', nativeName: 'English'),
     Language(name: 'Hindi', code: 'hi', flag: '🇮🇳', nativeName: 'हिंदी'),
     Language(name: 'Marathi', code: 'mr', flag: '🇮🇳', nativeName: 'मराठी'),
-    Language(name: 'Gujarati', code: 'gu', flag: '🇮🇳', nativeName: 'ગુજરાતી'),
   ];
 
 

@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -62,13 +60,12 @@ class CustomDropdownField<T> extends StatelessWidget {
       value: value,
       decoration: InputDecoration(
         labelText: isRequired ? '$labelText *' : labelText,
-        labelStyle: labelStyle ?? TextStyle(
-          fontSize: 14.sp,
-          fontWeight: FontWeight.w500,
-        ),
-        prefixIcon: prefixIcon != null
-            ? Icon(prefixIcon, size: 20.sp)
-            : null,
+        labelStyle: labelStyle ??
+            TextStyle(
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w500,
+            ),
+        prefixIcon: prefixIcon != null ? Icon(prefixIcon, size: 20.sp) : null,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius ?? 12.r),
           borderSide: BorderSide(
@@ -103,29 +100,32 @@ class CustomDropdownField<T> extends StatelessWidget {
         ),
         filled: fillColor != null,
         fillColor: fillColor,
-        contentPadding: contentPadding ?? EdgeInsets.symmetric(
-          horizontal: 16.w,
-          vertical: 12.h,
-        ),
+        contentPadding: contentPadding ??
+            EdgeInsets.symmetric(
+              horizontal: 16.w,
+              vertical: 12.h,
+            ),
       ),
       hint: Text(
         hintText ?? 'Select ${labelText.replaceAll('*', '').trim()}',
-        style: hintStyle ?? TextStyle(
-          fontSize: 14.sp,
-          color: theme.hintColor,
-        ),
+        style: hintStyle ??
+            TextStyle(
+              fontSize: 14.sp,
+              color: theme.hintColor,
+            ),
       ),
       items: items
           .map((item) => DropdownMenuItem<T>(
-        value: item,
-        child: Text(
-          itemLabelBuilder(item),
-          style: itemTextStyle ?? TextStyle(
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ))
+                value: item,
+                child: Text(
+                  itemLabelBuilder(item),
+                  style: itemTextStyle ??
+                      TextStyle(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w500,
+                      ),
+                ),
+              ))
           .toList(),
       onChanged: enabled ? onChanged : null,
       validator: validator,
@@ -149,14 +149,15 @@ class CustomDropdownField<T> extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(borderRadius ?? 12.r),
           color: dropdownBackgroundColor ?? theme.scaffoldBackgroundColor,
-          boxShadow: dropdownShadow ?? [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              spreadRadius: 1,
-              blurRadius: 10,
-              offset: const Offset(0, 4),
-            ),
-          ],
+          boxShadow: dropdownShadow ??
+              [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  spreadRadius: 1,
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
+                ),
+              ],
         ),
         elevation: 8,
         scrollbarTheme: ScrollbarThemeData(
@@ -170,7 +171,7 @@ class CustomDropdownField<T> extends StatelessWidget {
         height: 48.h,
         padding: EdgeInsets.symmetric(horizontal: 16.w),
         overlayColor: WidgetStateProperty.resolveWith<Color?>(
-              (Set<WidgetState> states) {
+          (Set<WidgetState> states) {
             if (states.contains(WidgetState.hovered)) {
               return theme.primaryColor.withOpacity(0.1);
             }

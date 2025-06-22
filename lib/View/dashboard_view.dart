@@ -43,7 +43,7 @@ class DashboardView extends StatelessWidget {
                         .fadeIn(duration: 600.ms, delay: 400.ms),
                     Gap(24.h * 0.85),
                     Text(
-                      'Recent Activities',
+                      'Register For Government Schemes',
                       style: TextStyle(
                         fontSize: 20.sp * 0.85,
                         fontWeight: FontWeight.bold,
@@ -51,6 +51,10 @@ class DashboardView extends StatelessWidget {
                       ),
                     ).animate().fadeIn(duration: 600.ms, delay: 600.ms),
                     Gap(16.h * 0.85),
+                    _buildGovernmentSchemes(context)
+                        .animate()
+                        .fadeIn(duration: 600.ms, delay: 800.ms),
+                    Gap(24.h * 0.85),
                   ],
                 ),
               ),
@@ -153,8 +157,7 @@ class DashboardView extends StatelessWidget {
       itemCount: actions.length,
       itemBuilder: (context, index) {
         final action = actions[index];
-        final iconBuilder =
-            action['icon'] as PhosphorIconData Function(PhosphorIconsStyle);
+        final iconBuilder = action['icon'] as PhosphorIconData Function(PhosphorIconsStyle);
         final color = action['color'] as Color;
 
         return Container(
@@ -173,7 +176,9 @@ class DashboardView extends StatelessWidget {
             color: Colors.transparent,
             child: InkWell(
               borderRadius: BorderRadius.circular(16.r * 0.85),
-              onTap: () {},
+              onTap: () {
+                _handleQuickActionTap(context, action['title'] as String);
+              },
               child: Padding(
                 padding: EdgeInsets.all(20.w * 0.85),
                 child: Column(
@@ -211,4 +216,181 @@ class DashboardView extends StatelessWidget {
     );
   }
 
+  Widget _buildGovernmentSchemes(BuildContext context) {
+    final schemes = [
+      {
+        'icon': PhosphorIcons.bank,
+        'title': 'Jan Dhan Yojana',
+        'color': SetuColors.success,
+        'description': 'Banking Services for Financial Inclusion'
+      },
+      {
+        'icon': PhosphorIcons.house,
+        'title': 'Gramin Awas Yojana',
+        'color': SetuColors.earthBrown,
+        'description': 'Housing Scheme for Rural Areas'
+      },
+      {
+        'icon': PhosphorIcons.heartbeat,
+        'title': 'Ayushman Bharat',
+        'color': SetuColors.error,
+        'description': 'Health Insurance Coverage'
+      },
+      {
+        'icon': PhosphorIcons.addressBook,
+        'title': 'PM Kisan Samman',
+        'color': SetuColors.lightGreen,
+        'description': 'Direct Income Support for Farmers'
+      },
+      {
+        'icon': PhosphorIcons.gasPump,
+        'title': 'Ujjwala Yojana',
+        'color': SetuColors.warning,
+        'description': 'Free LPG Connection for Women'
+      },
+    ];
+
+    return Column(
+      children: schemes.asMap().entries.map((entry) {
+        final index = entry.key;
+        final scheme = entry.value;
+        final iconBuilder = scheme['icon'] as PhosphorIconData Function(PhosphorIconsStyle);
+        final color = scheme['color'] as Color;
+
+        return Container(
+          margin: EdgeInsets.only(
+            bottom: index < schemes.length - 1 ? 12.h * 0.85 : 0,
+          ),
+          child: Container(
+            width: double.infinity,
+            padding: EdgeInsets.all(16.w * 0.85),
+            decoration: BoxDecoration(
+              color: SetuColors.cardBackground,
+              borderRadius: BorderRadius.circular(16.r * 0.85),
+              boxShadow: [
+                BoxShadow(
+                  color: color.withOpacity(0.15),
+                  blurRadius: 12,
+                  offset: Offset(0, 4),
+                ),
+              ],
+              border: Border.all(
+                color: color.withOpacity(0.2),
+                width: 1,
+              ),
+            ),
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(
+                borderRadius: BorderRadius.circular(16.r * 0.85),
+                onTap: () {
+                  _handleSchemeTap(context, scheme['title'] as String);
+                },
+                child: Row(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(12.w * 0.85),
+                      decoration: BoxDecoration(
+                        color: color.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(12.r * 0.85),
+                      ),
+                      child: Icon(
+                        iconBuilder(PhosphorIconsStyle.regular),
+                        color: color,
+                        size: 28.w * 0.85,
+                      ),
+                    ),
+                    Gap(16.w * 0.85),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            scheme['title'] as String,
+                            style: TextStyle(
+                              fontSize: 16.sp * 0.85,
+                              fontWeight: FontWeight.w600,
+                              color: SetuColors.textPrimary,
+                            ),
+                          ),
+                          Gap(4.h * 0.85),
+                          Text(
+                            scheme['description'] as String,
+                            style: TextStyle(
+                              fontSize: 13.sp * 0.85,
+                              color: SetuColors.textSecondary,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Icon(
+                      PhosphorIcons.caretRight(PhosphorIconsStyle.regular),
+                      color: SetuColors.textSecondary,
+                      size: 20.w * 0.85,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        );
+      }).toList(),
+    );
+  }
+
+  // Navigation handlers for Quick Actions
+  void _handleQuickActionTap(BuildContext context, String actionTitle) {
+    switch (actionTitle) {
+      case 'New Registration':
+      // Navigator.push(context, MaterialPageRoute(builder: (context) => NewRegistrationPage()));
+        print('Navigate to: New Registration Page');
+        break;
+      case 'View Documents':
+      // Navigator.push(context, MaterialPageRoute(builder: (context) => ViewDocumentsPage()));
+        print('Navigate to: View Documents Page');
+        break;
+      case 'Upload Photos':
+      // Navigator.push(context, MaterialPageRoute(builder: (context) => UploadPhotosPage()));
+        print('Navigate to: Upload Photos Page');
+        break;
+      case 'Contact Support':
+      // Navigator.push(context, MaterialPageRoute(builder: (context) => ContactSupportPage()));
+        print('Navigate to: Contact Support Page');
+        break;
+      default:
+        print('Unknown action: $actionTitle');
+    }
+  }
+
+  // Navigation handlers for Government Schemes
+  void _handleSchemeTap(BuildContext context, String schemeTitle) {
+    // Remove line breaks from title for cleaner routing
+    String cleanTitle = schemeTitle.replaceAll('\n', ' ');
+
+    switch (cleanTitle) {
+      case 'Jan Dhan Yojana':
+      // Navigator.push(context, MaterialPageRoute(builder: (context) => JanDhanYojanaPage()));
+        print('Navigate to: Jan Dhan Yojana Page');
+        break;
+      case 'Gramin Awas Yojana':
+      // Navigator.push(context, MaterialPageRoute(builder: (context) => GraminAwasYojanaPage()));
+        print('Navigate to: Gramin Awas Yojana Page');
+        break;
+      case 'Ayushman Bharat':
+      // Navigator.push(context, MaterialPageRoute(builder: (context) => AyushmanBharatPage()));
+        print('Navigate to: Ayushman Bharat Page');
+        break;
+      case 'PM Kisan Samman':
+      // Navigator.push(context, MaterialPageRoute(builder: (context) => PMKisanSammanPage()));
+        print('Navigate to: PM Kisan Samman Page');
+        break;
+      case 'Ujjwala Yojana':
+      // Navigator.push(context, MaterialPageRoute(builder: (context) => UjjwalaYojanaPage()));
+        print('Navigate to: Ujjwala Yojana Page');
+        break;
+      default:
+        print('Unknown scheme: $cleanTitle');
+    }
+  }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'API Service/api_service.dart';
+import 'Controller/get_translation_controller/get_translation_controller.dart';
 import 'Route Manager/app_bindings.dart';
 import 'Route Manager/app_routes.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,6 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ApiService.init();
+  Get.put(TranslationController());
 
   // Set system UI overlay style
   SystemChrome.setSystemUIOverlayStyle(

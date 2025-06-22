@@ -7,7 +7,6 @@ import '../API Service/api_service.dart';
 import '../Auth/token_manager.dart';
 import '../Models/login_model.dart';
 import '../Route Manager/app_routes.dart';
-import '../utils/constants.dart';
 
 class LoginController extends GetxController {
   // Form key for validation
@@ -142,7 +141,7 @@ class LoginController extends GetxController {
       };
 
       final response = await ApiService.post<LoginApiResponse>(
-        endpoint: loginUrl,
+        endpoint: '/login',
         body: requestBody,
         fromJson: (json) => LoginApiResponse.fromJson(json),
         includeToken: false,

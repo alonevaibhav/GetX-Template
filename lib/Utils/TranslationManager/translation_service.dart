@@ -1,9 +1,9 @@
 // translation_service.dart
 import 'dart:async';
 import 'dart:convert';
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:translator/translator.dart';
 
 /// Configuration class for translation service
@@ -554,7 +554,9 @@ class SupportedLanguages {
     Language(name: 'English', code: 'en', flag: '🇺🇸', nativeName: 'English'),
     Language(name: 'Hindi', code: 'hi', flag: '🇮🇳', nativeName: 'हिंदी'),
     Language(name: 'Marathi', code: 'mr', flag: '🇮🇳', nativeName: 'मराठी'),
+    Language(name: 'Gujarati', code: 'gu', flag: '🇮🇳', nativeName: 'ગુજરાતી'),
   ];
+
 
   static Language? findByCode(String code) {
     try {

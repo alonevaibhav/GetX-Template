@@ -22,6 +22,8 @@ class LoginController extends GetxController {
   var isPasswordVisible = false.obs;
   var errorMessage = ''.obs;
   var selectedRole = ''.obs;
+  final isOffline = false.obs;
+
 
   // Reactive form data
   var loginModel = LoginModel.empty().obs;
